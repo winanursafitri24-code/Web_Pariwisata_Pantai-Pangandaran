@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Pemesanan Lensa Kreatif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <h1>Formulir Pemesanan Jasa tour</h1>
+    <ul>
+      <li><a href="index.html">Kembali ke Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+<form id="orderForm" class="card">
+
+<section>
+  <h3>Data Pribadi</h3>
+
+  <div class="form-group">
+    <label>Nama Lengkap:</label>
+    <input type="text" name="nama" required>
+  </div>
+
+  <div class="form-group">
+    <label>Password Akun:</label>
+    <input type="password" name="pass" required>
+  </div>
+
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label>Nomor WhatsApp:</label>
+    <input type="tel" name="telepon">
+  </div>
+  
+    <div class="form-group">
+    <label>Alamat:</label>
+    <input type="tel" name="alamat">
+  </div>
+  
+<section>
+  <h3>Detail Pesanan</h3>
+
+  <div class="form-group">
+    <label>Tanggal:</label>
+    <input type="date" name="tanggal">
+  </div>
+
+  <div class="form-group">
+    <label>Jam:</label>
+    <input type="time" name="jam">
+  </div>
+
+  <div class="form-group">
+    <label>Jumlah Personil:</label>
+    <input type="number" name="jumlah" min="1" max="50">
+  </div>
+  
+   <section>
+      <h3>Lokasi Penjemputan</h3>
+      <div class="form-group">
+        <label>Provinsi:</label>
+        <select name="provinsi" required>
+          <option>Jawa Barat</option>
+          <option>Jawa Tengah</option>
+          <option>Jawa Timur</option>
+          <option>DKI Jakarta</option>
+          <option>DI Yogyakarta</optiom>
+          <option>Banten</option>
+          <option>Bali</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+    <label>Alamat:</label>
+    <input type="tel" name="alamat">
+      </div>
+      
+      <div class="form-group">
+        <label for="desa">Desa / Kelurahan:</label>
+        <select name="desa" id="desa">
+          <option value="Cipada">Cipada</option>
+          <option value="Jambudipa">Jambudipa</option>
+          <option value="Kertawangi">Kertawangi</option>
+          <option value="Padaasih">Padaasih</option>
+          <option value="Pasirhalang">Pasirhalang</option>
+          <option value="Pasirlangu">Pasirlangu</option>
+          <option value="Sadangmekar">Sadangmekar</option>
+          <option value="Tugumukti">Tugumukti</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="kecamatan">Kecamatan:</label>
+        <select name="Kecamatan" id="kecamatan">
+          <option value="Batujajar">Bajujajar</option>
+          <option value="Cihampelas">Cihampelas</option>
+          <option value="Cikalongwetan">Cikalongwetan</option>
+          <option value="Cililin">Cililin</option>
+          <option value="Cipatat">Cipatat</option>
+          <option value="Cipeundeuy">Cipeundeuy</option>
+          <option value="Cipongkor">Cipongkor</option>
+          <option value="Cisarua">Cisarua</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="Kabupaten">Kabupaten / Kota:</label>
+        <select name="kab" id="kab">
+          <option value="Kabupaten Bandung">Kabupaten Bandung</option>
+          <option value="Kabupaten Bandung Barat">Kabupaten Bandung Barat</option>
+          <option value="Kabupaten Bogor">Kabupaten Bogor</option>
+          <option value="Kabupaten Bekasi">Kabupaten Bekasi</option>
+          <option value="Kabupaten Cianjur">Kabupaten Cianjur</option>
+          <option value="Kota Bandung">Kota Bandung</option>
+          <option value="Kota Banjar">Kota Banjar</option>
+          <option value="Kota Bogor">Kota Bogor</option>
+          <option value="Kota Bekasi">Kota Bekasi</option>
+          <option value="Kota Cimahi">Kota Cimahi</option>
+        </select>
+      </div>
+<section>
+  <h3>Pembayaran Transaksi</h3>
+<div class="form-group">
+  <label>Metode Pembayaran:</label><br>
+  <input type="radio" name="payment" value="Full Payment" required> Full Payment
+  <input type="radio" name="payment" value="DP 50%"> DP 50%
+</div>
+<div class="form-group">
+  <label for="E-wallet">E-wallet:</label>
+  <select name="E-wallet" id="E-wallet" required>
+    <option value="Dana">Dana</option>
+    <option value="OVO">OVO</option>
+    <option value="Gopay">Gopay</option>
+    <option value="Transfer bank">Transfer bank</option>
+  </select>
+</div>
+<section>
+  <input type="reset" value="Kosongkan Form">
+  <input type="submit"="Kirim Pesanan">
+</section>
+
+</form>
+
+<div id="result" style="display:none; margin-top:20px;"></div>
+
+</main>
+
+<script>
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+  localStorage.setItem("pesananTerakhir", JSON.stringify(data));
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").innerHTML =
+    "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+
+  alert("pesanan " + data.nama + ",anda berhasil disimpan!");
+});
+</script>
+</body>
+  </html>
